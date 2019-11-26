@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Memory Game</title>
+	
+</head>
+<body>
+  <div id="firstPage">
+  	<h1>Generate a number</h1>
+  	<button id="gen">generate</button>
+  	  <p id="print"></p>
+  <p id="load"></p>
+  </div>
+
+  <div id="content"></div>
+</body>
+<script>
+  
+
+  var random =Math.floor(Math.random()*1000000);
+  var ran = Array.from(String(random), Number);
+  localStorage.setItem("random",JSON.stringify(ran));
+  if(document.getElementById('gen')){
+        document.getElementById("gen").addEventListener("click",function (){
+       document.getElementById("print").innerHTML= (random);
+       document.getElementById("load").innerHTML= "Page refreshing in 10 seconds" ;
+       setTimeout('Redirect()', 10000);
+    });
+}
+  
+ const Redirect =()=>
+  {  
+      
+
+        document.getElementById('content').innerHTML=`   
+        <h1>Guess the number</h1>
+          <input type="text" id="inputnum"placeholder="Enter a number"><br>
+          <button type="submit" onclick="useIP()" id="guess"> Guess</button>
+          <button type="submit" onclick="location.href='index.html'">Replay the game</button><br><br>
+
+          <h2 id="output"></h2>
+      </div>`
+        document.getElementById('firstPage').style.display='none';
+  }
+
+
+
+ </script>
+<script type="text/javascript" src="main.js"></script>
+</html>
+
+
